@@ -1,0 +1,104 @@
+<app-header></app-header>
+
+<div class="container register-container">
+  <h1>Register</h1>
+</div>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <!-- Name -->
+  <div class="form-field" [class.invalid]="getControl('name')?.invalid && getControl('name')?.touched">
+    <label for="name">Name</label>
+    <input id="name" type="text" formControlName="name" />
+    <div class="error" *ngIf="getControl('name')?.invalid && getControl('name')?.touched">
+      <small *ngIf="getControl('name')?.errors?.['required']">Name is required.</small>
+      <small *ngIf="getControl('name')?.errors?.['minlength']">Name must be at least 5 characters.</small>
+      <small *ngIf="getControl('name')?.errors?.['pattern']">Name can only contain letters and spaces.</small>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="form-field" [class.invalid]="getControl('email')?.invalid && getControl('email')?.touched">
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" />
+    <div class="error" *ngIf="getControl('email')?.invalid && getControl('email')?.touched">
+      <small *ngIf="getControl('email')?.errors?.['required']">Email is required.</small>
+      <small *ngIf="getControl('email')?.errors?.['email']">Please enter a valid email.</small>
+    </div>
+  </div>
+
+  <!-- Phone -->
+  <div class="form-field" [class.invalid]="getControl('phone')?.invalid && getControl('phone')?.touched">
+    <label for="phone">Phone (10 digits)</label>
+    <input id="phone" type="tel" formControlName="phone" />
+    <div class="error" *ngIf="getControl('phone')?.invalid && getControl('phone')?.touched">
+      <small *ngIf="getControl('phone')?.errors?.['required']">Phone is required.</small>
+      <small *ngIf="getControl('phone')?.errors?.['pattern']">Phone must be a 10-digit number.</small>
+    </div>
+  </div>
+
+  <!-- Date of Birth -->
+  <div class="form-field" [class.invalid]="getControl('dob')?.invalid && getControl('dob')?.touched">
+    <label for="dob">Date of Birth</label>
+    <input id="dob" type="date" formControlName="dob" />
+    <div class="error" *ngIf="getControl('dob')?.invalid && getControl('dob')?.touched">
+      <small *ngIf="getControl('dob')?.errors?.['required']">Date of birth is required.</small>
+    </div>
+  </div>
+
+  <!-- Street Address -->
+  <div class="form-field" [class.invalid]="getControl('streetAddress')?.invalid && getControl('streetAddress')?.touched">
+    <label for="streetAddress">Street Address</label>
+    <input id="streetAddress" type="text" formControlName="streetAddress" />
+    <div class="error" *ngIf="getControl('streetAddress')?.invalid && getControl('streetAddress')?.touched">
+      <small *ngIf="getControl('streetAddress')?.errors?.['required']">Street address is required.</small>
+      <small *ngIf="getControl('streetAddress')?.errors?.['pattern']">
+        Street address can contain letters, numbers, and spaces.
+      </small>
+    </div>
+  </div>
+
+  <!-- Province -->
+<div class="form-field" [class.invalid]="registerForm.get('province')?.invalid && registerForm.get('province')?.touched">
+  <label for="province">Province</label>
+  <select id="province" formControlName="province">
+    <option value="">Select a province</option>
+    <option *ngFor="let p of provinces" [value]="p">{{ p }}</option>
+  </select>
+  <div class="error" *ngIf="registerForm.get('province')?.invalid && registerForm.get('province')?.touched">
+    <small>Please select a province.</small>
+  </div>
+</div>
+
+  <!-- Country -->
+  <div class="form-field" [class.invalid]="getControl('country')?.invalid && getControl('country')?.touched">
+    <label for="country">Country</label>
+    <select id="country" formControlName="country">
+      <option value="">Select a country</option>
+      <option *ngFor="let c of countries" [value]="c">{{ c }}</option>
+    </select>
+    <div class="error" *ngIf="getControl('country')?.invalid && getControl('country')?.touched">
+      <small *ngIf="getControl('country')?.errors?.['required']">Country is required.</small>
+      <small *ngIf="getControl('country')?.errors?.['mustBeCanada']">
+        You must select Canada to proceed.
+      </small>
+    </div>
+  </div>
+
+  <!-- Terms & Conditions -->
+  <div class="form-field terms" [class.invalid]="getControl('acceptTerms')?.invalid && getControl('acceptTerms')?.touched">
+    <label>
+      <input type="checkbox" formControlName="acceptTerms" />
+      I accept the Terms &amp; Conditions
+    </label>
+    <div class="error" *ngIf="getControl('acceptTerms')?.invalid && getControl('acceptTerms')?.touched">
+      <small>You must accept the Terms &amp; Conditions.</small>
+    </div>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" [disabled]="registerForm.invalid">
+    Submit
+  </button>
+</form>
+
+<a routerLink="/" class="back-home">← Back to Home</a>

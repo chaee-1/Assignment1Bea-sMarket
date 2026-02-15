@@ -1,0 +1,84 @@
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field.invalid input,
+.form-field.invalid select {
+  border: 2px solid red;
+}
+
+input,
+select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.error small {
+  color: red;
+  font-size: 0.8rem;
+}
+
+button[type='submit'] {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button[disabled] {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+select option {
+  background-color: white !important;
+  color: black !important;
+}
+
+.register-container {
+  background: #F8C8DC;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-top: 2rem;
+}
+
+button[type='submit'] {
+  background-color: #ffb6c1; 
+  color: #333;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button[type='submit']:hover:not([disabled]) {
+  background-color: #ffa7b3;
+}
+
+.back-home {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.back-home:hover {
+  text-decoration: underline;
+}

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from './shared/header/header';
-import { ProductsPageComponent } from './market/products-page/products-page';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, ProductsPageComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
+  styleUrls: ['./app.css'],
 })
 export class AppComponent {}
